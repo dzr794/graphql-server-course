@@ -1,5 +1,8 @@
 import db from "./_db.js";
-import { createGameInput, createAuthorInput, createReviewInput } from "./types";
+import { 
+  createGameInput, createAuthorInput, createReviewInput,
+  editGameInput, editAuthorInput, editReviewInput
+ } from "./types";
 
 export const resolvers = {
   Query: {
@@ -55,14 +58,27 @@ export const resolvers = {
       return game
     },
     deleteGame(_, args) {
+      // remove the game 
       const deletedGame = db.games.find((game) => game.id === args.id)
       db.games = db.games.filter((game) => game.id !== args.id)
+
+      // remove the reviews that talk about that game
+      const deleteReview = db.reviews.filter((review) => review.game_id === args.id);
+      db.reviews = db.reviews.filter((review) => review.game_id !== args.id);
+
       return deletedGame
     },
-    updateGame(_, args) {
-      const game = db.games.find((game) => game.id === args.id)
-      Object.assign(game, args)
-      return game
+    updateGame(_, args:editGameInput) {
+      db.games = db.games.map( (game) => {
+
+        if (game.id === args.id) { // if the id of the iterated game is the same
+          return { ...game, ...args.edits} // spread its current values and spred the new values so they can replace the old ones
+        }
+
+        return game
+      })
+
+      return db.games.find( game => game.id === args.id )
     },
 
     createAuthor(_, args:createAuthorInput) {

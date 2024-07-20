@@ -39,15 +39,15 @@ export const typeDefs:string = `#graphql
   type Mutation {
     
     createGame( game: createGameInput ): Game,
-    updateGame(id: ID!, edit: editGameInput): Game,
+    updateGame(id: ID!, edits: editGameInput): Game,
     deleteGame(id: ID!): Game,
 
     createAuthor( author: createAuthorInput ): Author,
-    updateAuthor(id: ID!, edit: editAuthorInput): Author,
+    updateAuthor(id: ID!, edits: editAuthorInput): Author,
     deleteAuthor(id: ID!): Author,
 
     createReview( review: createReviewInput ): Review,
-    updateReview(id: ID!, edit: editReviewInput): Review,
+    updateReview(id: ID!, edits: editReviewInput): Review,
     deleteReview(id: ID!): Review,
 
   },

@@ -12,7 +12,8 @@ export type createGameInput = {
 }
 
 export type editGameInput = {
-  game: {
+  id: string,
+  edits: {
     title?: string,
     platform?: string[],
   }

@@ -11,7 +11,8 @@ export type createAuthorInput = {
 }
 
 export type editAuthorInput = {
-  author: { 
+  id: string,
+  edits: { 
     name?: string,
     verified?: boolean,
   }

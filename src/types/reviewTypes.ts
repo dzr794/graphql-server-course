@@ -16,7 +16,8 @@ export type createReviewInput = {
 }
 
 export type editReviewInput = {
-  review: {
+  id: string,
+  edits: {
     rating?: number,
     content?: string,
     game_id?: string,
