@@ -5,7 +5,7 @@
   "main": "./src/index.ts",
   "scripts": {
     "compile": "tsc",
-    "start": "yarn compile && nodemon ./dist/index.js"
+    "start": "yarn compile && node ./dist/index.js"
   },
   "keywords": [],
   "author": "David Zapata <dzr794@gmail.com>",
@@ -20,5 +20,4 @@
     "@types/node": "^20.14.11",
     "typescript": "^5.5.3"
   }
-  
 }
